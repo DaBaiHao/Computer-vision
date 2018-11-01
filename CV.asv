@@ -2,7 +2,6 @@
 img = imread(fullfile('C:','Users','Administrator','Desktop','turtal1','dataset','DatasetA','car-1.jpg'));
 %img = imread("CV_NAME_PICTURE.jpg");
 [h,w,d]=size(img);
-video = "DatasetB.avi";
 obj = VideoReader(video);
 img = read(obj,299);
 imshow(img);
@@ -26,28 +25,8 @@ imshow(img);
 %imshow(filter_some);
 
 %% question3a_1
-video = "DatasetB.avi";
-obj = VideoReader(video);
 img = read(obj,1);
 ICV_histogram(img);
 %% question3a_2
-video = "DatasetB.avi";
-obj = VideoReader(video);
 img = read(obj,299);
-ICV_histogram(img);
-%% question3b_1 using frame 3
-video = "DatasetB.avi";
-obj = VideoReader(video);
-img = read(obj,3);
-ICV_histogram(img);
-%% question3b_2 using frame 3+1
-video = "DatasetB.avi";
-obj = VideoReader(video);
-img = read(obj,4);
-ICV_histogram(img);
-%% question3b_3 using frame 3and4 Intersection  
-video = "DatasetB.avi";
-obj = VideoReader(video);
-img1 = read(obj,3);
-img2 = read(obj,4);
 ICV_histogram(img);

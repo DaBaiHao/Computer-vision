@@ -74,35 +74,24 @@ end
 
  
 
-% x = 1:255;
-
 subplot(3,1,1);
-
 bar(red_his, 'r');
-
-xlabel('red ');
-
-title('sssss');
-
+xlabel('red level');
+ylabel('Number of pixels');
+title('red slices histogram');
  
-
 subplot(3,1,2);
-
 bar(green_his, 'g');
-
-xlabel('green ');
-
-title('sssss');
-
+xlabel('green level');
+ylabel('Number of pixels');
+title('green slices histogram');
  
-
 subplot(3,1,3);
-
 bar(blue_his, 'b');
-
-xlabel('blue ');
-
-title('sssss');
+xlabel('blue level ');
+ylabel('Number of pixels');
+title('blue slices histogram');
+ 
 
  
 
