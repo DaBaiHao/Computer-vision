@@ -1,5 +1,8 @@
 function ICV_video(video)
  
+%  histogram intersection function to calculate the intersection between the consecutive frames
+
+
 obj = VideoReader(video);
 obj_numberofframe = obj.NumberOfFrame;
  
@@ -62,25 +65,25 @@ for m = 1:obj_numberofframe -1
             end
         end
     end
-red_his = ICV_intersection(red_his, red_his2);
-green_his = ICV_intersection(green_his, green_his2);
-blue_his = ICV_intersection(blue_his, blue_his2);
+red_his_i = ICV_intersection(red_his, red_his2);
+green_his_i = ICV_intersection(green_his, green_his2);
+blue_his_i = ICV_intersection(blue_his, blue_his2);
 
 
 subplot(3,1,1);
-bar(red_his, 'r');
+bar(red_his_i, 'r');
 xlabel('red level');
 ylabel('Number of pixels');
 title('red slices histogram');
  
 subplot(3,1,2);
-bar(green_his, 'g');
+bar(green_his_i, 'g');
 xlabel('green level');
 ylabel('Number of pixels');
 title('green slices histogram');
  
 subplot(3,1,3);
-bar(blue_his, 'b');
+bar(blue_his_i, 'b');
 xlabel('blue level ');
 ylabel('Number of pixels');
 title('blue slices histogram');

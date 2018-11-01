@@ -1,5 +1,5 @@
 function intersection= ICV_intersection(hisgram1,hisgram2)
-%ICV_INTERCTITION this function is to compare two hisgram and 
+%ICV_INTERCTITION this function is to calculate intersection of a pair of histograms
  
  
 intersection = zeros(1,255);

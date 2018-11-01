@@ -15,10 +15,11 @@ img = imread(fullfile('C:','Users','Administrator','Desktop','turtal1','dataset'
 % rotate_30=ICV_Rot(shew_10,20);
 
 
-%filter_some = ICV_filter2(img);
-video = "DatasetB.avi";
+filter_some = ICV_filter55(img);
+%filter_some = ICV_filter(img);
+%video = "DatasetB.avi";
 %filter_some = ICV_filter(filter_some);
-ICV_video(video);
+%ICV_video(video);
 
 %imhist(1,img);
-%imshow(filter_some);
+imshow(filter_some);

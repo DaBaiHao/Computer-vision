@@ -1,10 +1,12 @@
 function after_filtered_image = ICV_filter(img)
  
 [Rows, Cols,slices] = size(img);
-convolutionMatrix = [1,-1,1
-                     1,5,1
-                     1,-1,1];
-                 
+
+% no changes kernal
+convolutionMatrix = [1,1,1
+                     1,1,1
+                     1,1,1];
+%                 
 kernelA  =     [1,2,1
                2,4,2
                 1,2,1]; 
@@ -15,7 +17,7 @@ kernelB  =     [0,1,0
                 1,-4,1
                 0,1,0]; 
             
-convolutionMatrix =        kernelA;   
+%convolutionMatrix =        kernelA;   
  
  
 %new_Rows = Rows-2;
