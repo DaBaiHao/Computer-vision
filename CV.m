@@ -50,4 +50,22 @@ video = "DatasetB.avi";
 obj = VideoReader(video);
 img1 = read(obj,3);
 img2 = read(obj,4);
+ICV_compareTwoframe(img1,img2);
+%% question3b_4 using frame 9 
+video = "DatasetB.avi";
+obj = VideoReader(video);
+img = read(obj,9);
+
 ICV_histogram(img);
+%% question3b_5 using frame 10
+video = "DatasetB.avi";
+obj = VideoReader(video);
+img = read(obj,10);
+%imshow(img);
+ICV_histogram(img);
+%% question3b_6 using frame 3and4 Intersection  
+video = "DatasetB.avi";
+obj = VideoReader(video);
+img1 = read(obj,9);
+img2 = read(obj,10);
+ICV_compareTwoframe(img1,img2);
