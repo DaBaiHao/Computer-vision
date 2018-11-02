@@ -21,10 +21,16 @@ imshow(img);
 %video = "DatasetB.avi";
 %filter_some = ICV_filter(filter_some);
 %ICV_video(video);
-%%
+%% question2a
 img = imread("car-1.jpg");
 filter_some = ICV_filter(img);
 imshow(filter_some);
+
+%% question2c
+img = imread("car-1.jpg");
+filter_some = ICV_filter55(img);
+imshow(filter_some);
+
 %% question3a_1
 video = "DatasetB.avi";
 obj = VideoReader(video);

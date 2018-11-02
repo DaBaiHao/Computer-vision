@@ -17,7 +17,7 @@ kernelB  =     [0,1,0
                 1,-4,1
                 0,1,0]; 
             
-convolutionMatrix =        convolutionMatrix;   
+convolutionMatrix =        kernelB;   
  
  
 %new_Rows = Rows-2;
