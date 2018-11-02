@@ -16,15 +16,15 @@ kernelA  =     [1,1,2,1,1
 %convolutionMatrix =        kernelA;   
  
 
-kernelB  =     [0,0,1,0,0
-                0,0,0,0,0
-                1,0,-4,0,1
-                0,0,0,0,0
-                0,0,1,0,0];
+kernelB  =     [0,0,0,0,0
+                0,0,1,0,0
+                0,1,-4,1,0
+                0,0,1,0,0
+                0,0,0,0,0];
 
 
             
-convolutionMatrix =        kernelA;   
+convolutionMatrix =        kernelB;   
  
  
 %new_Rows = Rows-2;

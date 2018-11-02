@@ -28,7 +28,7 @@ imshow(filter_some);
 
 %% question2c
 img = imread("car-1.jpg");
-filter_some = ICV_filter55(img);
+filter_some = ICV_filter(img);
 imshow(filter_some);
 
 %% question3a_1
