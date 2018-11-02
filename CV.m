@@ -21,16 +21,42 @@ imshow(img);
 %video = "DatasetB.avi";
 %filter_some = ICV_filter(filter_some);
 %ICV_video(video);
+%%
+
+h = fspecial('gaussian', 3,1.5);
+ans = h*10;
 %% question2a
 img = imread("car-1.jpg");
 filter_some = ICV_filter55(img);
+filter_some = ICV_filter55(filter_some);
 imshow(filter_some);
 
-%% question2c
+%% question2c AA
 img = imread("car-1.jpg");
 filter_some = ICV_filter(img);
+filter_some = ICV_filter(filter_some);
+imshow(filter_some);
+%% question2c B
+img = imread("car-1.jpg");
+filter_some = ICV_filterB(img);
+%filter_some = ICV_filter(filter_some);
+imshow(filter_some);
+%% question2c A B
+img = imread("car-1.jpg");
+filter_some = ICV_filter(img);
+filter_some = ICV_filterB(filter_some);
 imshow(filter_some);
 
+%% question2c B A
+img = imread("car-1.jpg");
+filter_some = ICV_filterB(img);
+filter_some = ICV_filter(filter_some);
+imshow(filter_some);
+%% question2c 55 A A
+img = imread("car-1.jpg");
+filter_some = ICV_filter55(img);
+filter_some = ICV_filter55(filter_some);
+imshow(filter_some);
 %% question3a_1
 video = "DatasetB.avi";
 obj = VideoReader(video);

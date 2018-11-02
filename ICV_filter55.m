@@ -8,9 +8,9 @@ convolutionMatrix = [1,1,1,1,1
                      1,1,1,1,1];
                  
 kernelA  =     [1,1,2,1,1
-                1,2,3,2,1
-                2,3,4,3,2
-                1,2,3,2,1
+                1,2,4,2,1
+                2,4,8,4,2
+                1,2,4,2,1
                 1,1,2,1,1];
             
 %convolutionMatrix =        kernelA;   
@@ -24,7 +24,7 @@ kernelB  =     [0,0,0,0,0
 
 
             
-convolutionMatrix =        kernelB;   
+convolutionMatrix =        kernelA;   
  
  
 %new_Rows = Rows-2;
@@ -38,7 +38,9 @@ for i = 1 : Rows-4
         row4 = double(img(i+3,j,:))*double(convolutionMatrix(4,1))   + double(img(i+3,j+1,:))*double(convolutionMatrix(4,2))+ double(img(i+3,j+2,:))*double(convolutionMatrix(4,3))+ double(img(i+3,j+3,:))*double(convolutionMatrix(4,4))+ double(img(i+3,j+4,:))*double(convolutionMatrix(4,5));
         row5 = double(img(i+4,j,:))*double(convolutionMatrix(5,1))   + double(img(i+4,j+1,:))*double(convolutionMatrix(5,2))+ double(img(i+4,j+2,:))*double(convolutionMatrix(5,3))+ double(img(i+4,j+3,:))*double(convolutionMatrix(5,4))+ double(img(i+4,j+4,:))*double(convolutionMatrix(5,5));
         
-        average = round((row1+row2+row3+row4+row5)/25);
+        % A 52
+        average = round((row1+row2+row3+row4+row5)/52);
+        
         after_filtered_image(i+2,j+2,:) = average;
     end
 end
