@@ -1,7 +1,7 @@
  %read the image
 %img = imread(fullfile('C:','Users','Administrator','Desktop','turtal1','dataset','DatasetA','car-1.jpg'));
 %img = imread("CV_NAME_PICTURE.jpg");
-[h,w,d]=size(img);
+%[h,w,d]=size(img);
 video = "DatasetB.avi";
 obj = VideoReader(video);
 img = read(obj,299);
@@ -23,7 +23,7 @@ imshow(img);
 %ICV_video(video);
 %% question2a
 img = imread("car-1.jpg");
-filter_some = ICV_filter(img);
+filter_some = ICV_filter55(img);
 imshow(filter_some);
 
 %% question2c

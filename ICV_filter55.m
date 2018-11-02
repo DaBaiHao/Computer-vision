@@ -8,9 +8,9 @@ convolutionMatrix = [1,1,1,1,1
                      1,1,1,1,1];
                  
 kernelA  =     [1,1,2,1,1
-                1,2,1,2,1
-                2,1,4,1,2
-                1,2,1,2,1
+                1,2,3,2,1
+                2,3,4,3,2
+                1,2,3,2,1
                 1,1,2,1,1];
             
 %convolutionMatrix =        kernelA;   
@@ -24,7 +24,7 @@ kernelB  =     [0,0,1,0,0
 
 
             
-convolutionMatrix =        kernelB;   
+convolutionMatrix =        kernelA;   
  
  
 %new_Rows = Rows-2;

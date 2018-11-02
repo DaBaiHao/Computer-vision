@@ -1,5 +1,5 @@
 function after_Rotated_img = ICV_Rot(img,angle)
-%ICV_ROT Inverse mapping function
+%ICV_ROT forward mapping function
 %   
 
 % img conversion
