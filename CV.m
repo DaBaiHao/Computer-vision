@@ -25,12 +25,36 @@ imshow(img);
 
 h = fspecial('gaussian', 3,1.5);
 ans = h*10;
-%% question2a
+%% question2a 55 AB
 img = imread("car-1.jpg");
 filter_some = ICV_filter55(img);
+filter_some = ICV_filter55B(filter_some);
+imshow(filter_some);
+
+%% question2a 55 BA
+img = imread("car-1.jpg");
+filter_some = ICV_filter55B(img);
 filter_some = ICV_filter55(filter_some);
 imshow(filter_some);
 
+%% question2a 77 A
+img = imread("car-1.jpg");
+%filter_some = ICV_filter55B(img);
+filter_some = ICV_filter77(img);
+imshow(filter_some);
+
+%% question2a 77 AB
+img = imread("car-1.jpg");
+%filter_some = ICV_filter55B(img);
+filter_some = ICV_filter77(img);
+filter_some = ICV_filter55B(filter_some);
+imshow(filter_some);
+%% question2a 77 BA
+img = imread("car-1.jpg");
+filter_some = ICV_filter55B(img);
+filter_some = ICV_filter77(filter_some);
+%filter_some = ICV_filter55B(filter_some);
+imshow(filter_some);
 %% question2c AA
 img = imread("car-1.jpg");
 filter_some = ICV_filter(img);
@@ -55,7 +79,7 @@ imshow(filter_some);
 %% question2c 55 A A
 img = imread("car-1.jpg");
 filter_some = ICV_filter55(img);
-filter_some = ICV_filter55(filter_some);
+%filter_some = ICV_filter55(filter_some);
 imshow(filter_some);
 %% question3a_1
 video = "DatasetB.avi";

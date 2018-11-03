@@ -1,4 +1,4 @@
-function after_filtered_image = ICV_filter77(img)
+function after_filtered_image = ICV_filter77B(img)
  
 [Rows, Cols,slices] = size(img);
 convolutionMatrix = [1,1,2,2,2,1,1
@@ -31,7 +31,7 @@ kernelB           = [0,0,0,0,0,0,0
 
 
             
-convolutionMatrix =        kernelA;   
+convolutionMatrix =        kernelB;   
  
  
 %new_Rows = Rows-2;
@@ -47,7 +47,7 @@ for i = 1 : Rows-6
         row6 = double(img(i+5,j,:))*double(convolutionMatrix(6,1))   + double(img(i+5,j+1,:))*double(convolutionMatrix(6,2))+ double(img(i+5,j+2,:))*double(convolutionMatrix(6,3))+ double(img(i+5,j+3,:))*double(convolutionMatrix(6,4))+ double(img(i+5,j+4,:))*double(convolutionMatrix(6,5))+ double(img(i+5,j+5,:))*double(convolutionMatrix(6,6))+ double(img(i+5,j+6,:))*double(convolutionMatrix(6,7));
         row7 = double(img(i+6,j,:))*double(convolutionMatrix(7,1))   + double(img(i+6,j+1,:))*double(convolutionMatrix(7,2))+ double(img(i+6,j+2,:))*double(convolutionMatrix(7,3))+ double(img(i+6,j+3,:))*double(convolutionMatrix(7,4))+ double(img(i+6,j+4,:))*double(convolutionMatrix(7,5))+ double(img(i+6,j+5,:))*double(convolutionMatrix(7,6))+ double(img(i+6,j+6,:))*double(convolutionMatrix(7,7));
         
-        average = round((row1+row2+row3+row4+row5+row6+row7)/128);
+        average = round((row1+row2+row3+row4+row5+row6+row7));
         after_filtered_image(i+3,j+3,:) = average;
     end
 end

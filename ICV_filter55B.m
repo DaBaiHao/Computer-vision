@@ -1,4 +1,4 @@
-function after_filtered_image = ICV_filter55(img)
+function after_filtered_image = ICV_filter55B(img)
  
 [Rows, Cols,slices] = size(img);
 convolutionMatrix = [1,1,1,1,1
@@ -24,7 +24,7 @@ kernelB  =     [0,0,0,0,0
 
 
             
-convolutionMatrix =        kernelA;   
+convolutionMatrix =        kernelB;   
  
  
 %new_Rows = Rows-2;
@@ -39,9 +39,9 @@ for i = 1 : Rows-4
         row5 = double(img(i+4,j,:))*double(convolutionMatrix(5,1))   + double(img(i+4,j+1,:))*double(convolutionMatrix(5,2))+ double(img(i+4,j+2,:))*double(convolutionMatrix(5,3))+ double(img(i+4,j+3,:))*double(convolutionMatrix(5,4))+ double(img(i+4,j+4,:))*double(convolutionMatrix(5,5));
         
         % A 52
-        average = round((row1+row2+row3+row4+row5)/52);
+        %average = round((row1+row2+row3+row4+row5)/52);
         % A 52
-        %average = round((row1+row2+row3+row4+row5));
+        average = round((row1+row2+row3+row4+row5));
         
         
         
