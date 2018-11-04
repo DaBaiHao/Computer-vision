@@ -1,4 +1,4 @@
- function ICV_compareTwoframe(img,img2)
+ function ICV_compareTwoframe2(img,img2)
  
     [Rows, Cols,slices] = size(img);
    % img1 r g b
@@ -54,13 +54,10 @@
             end
         end
     end
-red_his_i = ICV_intersection(red_his, red_his2);
-green_his_i = ICV_intersection(green_his, green_his2);
-blue_his_i = ICV_intersection(blue_his, blue_his2);
+red_his_i = ICV_join(red_his, red_his2);
+green_his_i = ICV_join(green_his, green_his2);
+blue_his_i = ICV_join(blue_his, blue_his2);
 
-red_his_i_2 = ICV_join(red_his, red_his2);
-green_his_i_2 = ICV_join(green_his, green_his2);
-blue_his_i_2 = ICV_join(blue_his, blue_his2);
 
 subplot(3,1,1);
 bar(red_his_i, 'r');
