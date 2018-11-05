@@ -12,19 +12,15 @@ imshow(img);
 %imshow(rotate_30);
 %img2 = imread("20.jpg");
 % show the img
-%shew_10=ICV_Shew(img,50);
-% rotate_30=ICV_Rot(shew_10,20);
 
-
-%filter_some = ICV_filter77(img);
-%filter_some = ICV_filter(img);
-%video = "DatasetB.avi";
-%filter_some = ICV_filter(filter_some);
-%ICV_video(video);
+%% skew an image
+img = imread("car-1.jpg");
+shew_10=ICV_Shew(img,50);
 %%
+img = imread("car-1.jpg");
+rotate_30=ICV_Rot(shew_10,20);
 
-h = fspecial('gaussian', 3,1.5);
-ans = h*10;
+
 %% question2a 55 AB
 img = imread("car-1.jpg");
 filter_some = ICV_filter55(img);
