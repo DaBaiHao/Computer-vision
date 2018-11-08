@@ -30,7 +30,7 @@ rotate_30 = ICV_Rot(img,30);
 
 ##### Example:
 
-```
+```MATLAB
 img = imread("car-1.jpg");
 shew_10 = ICV_Shew(img,10);
 ```
