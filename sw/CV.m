@@ -121,3 +121,12 @@ obj = VideoReader(video);
 img1 = read(obj,9);
 img2 = read(obj,10);
 ICV_compareTwoframe(img1,img2);
+
+%% question4 
+video = "DatasetB.avi";
+obj = VideoReader(video);
+img1 = read(obj,9);
+img2 = read(obj,10);
+
+
+
