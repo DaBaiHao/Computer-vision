@@ -7,3 +7,8 @@ img2 = read(obj,10);
 % input Block 16 * 16
 inputBlock = ones(16,16);
 
+
+
+%%
+video = "DatasetB.avi";
+
