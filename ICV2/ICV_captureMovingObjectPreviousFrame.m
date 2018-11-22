@@ -1,8 +1,8 @@
 % function input: a video path
-function [outputArg1,outputArg2] = ICV_captureMovingObject(video_path)
+function [outputArg1,outputArg2] = ICV_captureMovingObjectPreviousFrame(video_path)
 
 
-obj = VideoReader(video);
+obj = VideoReader(video_path);
 obj_numberofframe = obj.NumberOfFrame;
 
 for i = 1:obj_numberofframe -1
@@ -18,10 +18,12 @@ for i = 1:obj_numberofframe -1
     for m = 1:Rows
         for n = 1:Cols
             
-            % ref is the first frame
+            % ref is the previous frame
             if(frame_1(m,n) ~= frame_2(m,n))
-                new_img(m,n) = frame_1(m,n);
+                new_img(m,n) = frame_2(m,n);
             end
+            
+            
             
         end
     end

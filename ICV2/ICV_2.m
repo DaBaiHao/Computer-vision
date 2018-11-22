@@ -10,5 +10,5 @@ inputBlock = ones(16,16);
 
 
 %%
-video = "DatasetB.avi";
-
+video_path = "NewDatasetC.avi";
+ICV_captureMovingObjectFirstFrame(video_path);
