@@ -14,7 +14,7 @@ video_path = "DatasetC.mpg";
 ICV_captureMovingObjectFirstFrame(video_path,40);
 %% 2-2
 video_path = "DatasetC.mpg";
-ICV_captureMovingObjectPreviousFrame(video_path,30);
+ICV_captureMovingObjectPreviousFrame(video_path,20);
 
 %%
 video_path = "DatasetC.mpg";
