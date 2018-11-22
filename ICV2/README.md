@@ -46,7 +46,7 @@ for m = 1:Rows
 end
 ```
 
-Because of the generated pixels have many noises in the background, add classification threshold into the **if** statement, if the difference number smaller than the classification threshold, the function will think the difference as noises :
+Because of the generated pixels have many noises in the background, add classification threshold into the **if** statement, if the difference number smaller than the classification threshold, the function will determine the difference as noises :
 
 ```matlab
 if(frame_1(m,n) ~= frame_2(m,n) && abs(frame_2(m,n)- frame_1(m,n)) > classification_threshold   )
