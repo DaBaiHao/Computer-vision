@@ -19,16 +19,16 @@ for i = 1:obj_numberofframe -1
         for n = 1:Cols
             
             % ref is the previous frame
-            for z = 1: 3
+            
                 
-                if(frame_1(m,n) ~= frame_2(m,n) && frame_2(m,n) < classification_threshold  )
+                if(frame_1(m,n) ~= frame_2(m,n) && abs(frame_2(m,n)- frame_1(m,n)) > classification_threshold  )
                   new_img(m,n) = 255;
                 else
                   new_img(m,n) = 0;
                 end
                 
                 
-            end
+            
             
             
             
