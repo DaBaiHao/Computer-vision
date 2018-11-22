@@ -1,5 +1,5 @@
 % function input: a video path
-function ICV_captureMovingObjectPreviousFrame(video_path, classification_threshold)
+function ICV_captureMovingObjectPreviousFrame(video_path)
 
 
 obj = VideoReader(video_path);
@@ -14,20 +14,16 @@ for i = 1:obj_numberofframe -1
     % calculate row and colom
     [Rows, Cols,~] = size(frame_1);
     
-    new_img = uint8(zeros(Rows,Cols));
+    new_img = uint8(zeros(Rows,Cols,3));
     for m = 1:Rows
         for n = 1:Cols
             
             % ref is the previous frame
             for z = 1: 3
                 
-                if(frame_1(m,n) ~= frame_2(m,n) && frame_2(m,n) < classification_threshold  )
-                  new_img(m,n) = 255;
-                else
-                  new_img(m,n) = 0;
+                if(frame_1(m,n,z) ~= frame_2(m,n,z))
+                  new_img(m,n,z) = frame_2(m,n,z);
                 end
-                
-                
             end
             
             
@@ -35,7 +31,7 @@ for i = 1:obj_numberofframe -1
         end
     end
     
-    imshow(new_img);
+        imshow(new_img);
 
 end
     
