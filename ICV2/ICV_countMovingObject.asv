@@ -1,0 +1,26 @@
+function number = ICV_countMovingObject(background, video_path, classification_threshold)
+
+
+obj = VideoReader(video_path);
+obj_numberofframe = obj.NumberOfFrame;
+frame_1 = read(obj,1);
+[Rows, Cols,~] = size(frame_1);
+
+for i = 1:obj_numberofframe
+    
+    for n = 1 : Rows
+        for m = 1 : Cols
+            
+            
+            
+        end
+    end
+    backgroundImg(:,:,1)
+    
+end
+
+
+
+
+end
+
