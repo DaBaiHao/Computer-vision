@@ -90,6 +90,7 @@ for i = 1:3:Rows-2
     end
 end
 
+% delete the use less row and col
 if mod(Rows,3) == 1
     LBPimg(Rows,:) = [];
 end
@@ -97,33 +98,24 @@ if mod(Rows,3) == 2
     LBPimg(Rows,:) = [];
     LBPimg(Rows,:) = [];
 end
-
+% delete the use less row and col
 if mod(Cols,3) == 1
     LBPimg(:,Cols) = [];
+end
+if mod(Cols,3) == 2
+    LBPimg(:,Cols) = [];
     LBPimg(:,Cols) = [];
 end
 
-LBP_blocks = blocks;
-% calculate the 3*3 non overlapping
-count_i = 0;
-for i = 1: 3 : Rows-2
-    count_i = count_i + 1;
-    count_j = 0;
-    for j = 1: 3: Cols-2
-        count_j = count_j + 1;
-        LBP_blocks{count_i,count_j} = LBPimg(i:i + 2,j:j + 2);
-    end
-end
+
+[Ro] = size(LBPimg);
 
 
 
-for i = 1:round(Rows/3)
-    for j = 1:round(Cols/3)
-        block_3by3 = LBP_blocks{i,j};
-        
-    end
-    
-end
+
+
+
+
 %{
 % not work
 LBP_i = 1;

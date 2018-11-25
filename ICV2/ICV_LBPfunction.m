@@ -90,6 +90,7 @@ for i = 1:3:Rows-2
     end
 end
 
+% delete the use less row and col
 if mod(Rows,3) == 1
     LBPimg(Rows,:) = [];
 end
@@ -97,7 +98,7 @@ if mod(Rows,3) == 2
     LBPimg(Rows,:) = [];
     LBPimg(Rows,:) = [];
 end
-
+% delete the use less row and col
 if mod(Cols,3) == 1
     LBPimg(:,Cols) = [];
 end
@@ -107,8 +108,18 @@ if mod(Cols,3) == 2
 end
 
 
+[Row_LBP, Col_LBP] = size(LBPimg);
 
-
+% binary
+for i = 1:3:Row_LBP-2
+    for j = 1:3:Col_LBP-2
+        
+        
+        str = sprintf('%d%d%d%d%d%d%d%d',LBPimg(i, j),LBPimg(i , j+1),LBPimg(i , j+2),LBPimg(i + 1, j+2),LBPimg(i + 2, j+2),LBPimg(i + 2, j+1),LBPimg(i + 2, j),LBPimg(i + 1, j));
+        LBPimg(i + 1, j+1) = bin2dec(str);
+        
+    end
+end
 
 
 
