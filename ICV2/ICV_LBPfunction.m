@@ -122,7 +122,7 @@ for i = 1:3:Row_LBP-2
 end
 
 
-
+imshow(LBPimg);
 %{
 % not work
 LBP_i = 1;
