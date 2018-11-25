@@ -24,6 +24,9 @@ for i = 1:obj_numberofframe
     end
     
     imshow(new_img);
+    % Note not correct
+    cc = bwconncomp(new_img);
+    disp(cc.NumObjects);
 end
 
 

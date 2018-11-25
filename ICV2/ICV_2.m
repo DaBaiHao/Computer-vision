@@ -24,5 +24,12 @@ backgroundImg = ICV_generateBackground(video_path);
 %% 2-4
 video_path = "DatasetC.mpg";
 backgroundImg = ICV_generateBackground(video_path);
-ICV_countMovingObject(backgroundImg,video_path,30);
+ICV_countMovingObject(backgroundImg,video_path,34);
+
+
+%% 3 -1
+video_path = "DatasetC.mpg";
+obj = VideoReader(video_path);
+frame_1 = read(obj,1);
+ICV_LBPfunction(frame_1);
 
