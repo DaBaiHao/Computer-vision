@@ -1,26 +1,8 @@
 
-function [outputArg1,outputArg2] = ICV_blockMatching(img, input_block, windows_size,loctionX,loctionY,block_Size)
-
+function [outputArg1,outputArg2] = ICV_blockMatching(img, input_block, windows_size,loctionX,loctionY)
 
 % find the size of the input block
 [inputBlock_rows, inputBlock_cols] = size(inputBlock);
-[Rows, Cols,~] = size(img);
-
-
-for i = 1 : block_Size :  Rows
-    a = (i-1)/block_Size + 1; 
-    
-    for j = 1 : block_Size :  Cols
-        
-    end
-end
-
-
-
-
-
-
-
 input_block = double(input_block);
 % create Mean_Square_Error 
 Mean_Square_Error_Rows = windows_size - inputBlock_rows+1;
@@ -36,14 +18,9 @@ for i = 1 : (windows_size - inputBlock_rows + 1)
     for j = 1 : (windows_size - inputBlock_cols + 1)
         temp = matchingWindow(i : i+ inputBlock_rows - 1, j : j + inputBlock_cols - 1);
         tempMean_Square_Error = (temp - input_block) .^ 2;
-        Mean_Square_Error(i, j) = sum(sum(tempMean_Square_Error));
+        
         
     end
 end
-
-min_Mean_Square_Error = min(min(Mean_Square_Error));
-[min_Mean_Square_Error_x, min_Mean_Square_Error_y] = find( Mean_Square_Error == min_Mean_Square_Error);
-
-
 end
 
