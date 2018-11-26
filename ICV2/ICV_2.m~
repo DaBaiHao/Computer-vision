@@ -39,6 +39,6 @@ video_path = "DatasetC.mpg";
 obj = VideoReader(video_path);
 frame_1 = read(obj,1);
 img_path = "face-2.jpg";
-img = imread(img_path);
-ICV_LBPfunction(img);
+
+ICV_LBPfunction(img_path);
 

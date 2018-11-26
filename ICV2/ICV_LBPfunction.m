@@ -96,7 +96,7 @@ if mod(Rows,3) == 1
 end
 if mod(Rows,3) == 2
     LBPimg(Rows,:) = [];
-    LBPimg(Rows,:) = [];
+    LBPimg(Rows-1,:) = [];
 end
 % delete the use less row and col
 if mod(Cols,3) == 1
@@ -104,7 +104,7 @@ if mod(Cols,3) == 1
 end
 if mod(Cols,3) == 2
     LBPimg(:,Cols) = [];
-    LBPimg(:,Cols) = [];
+    LBPimg(:,Cols-1) = [];
 end
 
 
