@@ -29,8 +29,8 @@ LBPimg = img_grayLevel;
 
 
 
-for i = 1:3:Rows-2
-    for j = 1:3: Cols - 2
+for i = 1:Rows-2
+    for j = 1: Cols - 2
         % left up
         if((img_grayLevel(i+1,j+1) >= img_grayLevel(i,j)))
             
@@ -110,19 +110,20 @@ end
 
 [Row_LBP, Col_LBP] = size(LBPimg);
 
+LBPimg2= LBPimg;
 % binary
-for i = 1:3:Row_LBP-2
-    for j = 1:3:Col_LBP-2
+for i = 1:Row_LBP-2
+    for j = 1:Col_LBP-2
         
         
         str = sprintf('%d%d%d%d%d%d%d%d',LBPimg(i, j),LBPimg(i , j+1),LBPimg(i , j+2),LBPimg(i + 1, j+2),LBPimg(i + 2, j+2),LBPimg(i + 2, j+1),LBPimg(i + 2, j),LBPimg(i + 1, j));
-        LBPimg(i + 1, j+1) = bin2dec(str);
+        LBPimg2(i + 1, j+1) = bin2dec(str);
         
     end
 end
 
 
-imshow(LBPimg);
+imshow(LBPimg2);
 %{
 % not work
 LBP_i = 1;
