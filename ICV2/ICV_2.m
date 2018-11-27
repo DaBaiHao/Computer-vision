@@ -4,7 +4,7 @@
 
 
 %%
-video = "DatasetB.avi";
+video = "DatasetC.mpg";
 obj = VideoReader(video);
 img1 = read(obj,9);
 img2 = read(obj,10);
@@ -14,7 +14,8 @@ block_Size = 16;
 
 % searchingWindows
 searching_Windows_size = 20;
-ICV_blockMatch(img1,block_Size,searching_Windows_size)
+img_block = ICV_blockMatch(img1,img2,block_Size,searching_Windows_size)
+
 
 %% 2-1
 video_path = "DatasetC.mpg";

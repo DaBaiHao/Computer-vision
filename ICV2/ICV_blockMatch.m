@@ -1,4 +1,4 @@
-function matchBlock = ICV_blockMatch(img,block_size,search_windows_size)
+function img_block = ICV_blockMatch(img,img_next,block_size,search_windows_size)
 
 img = img(:,:,1);
 
@@ -10,41 +10,79 @@ block_i = 1;
 for i = 1:block_size:(Rows)
     block_j = 1;
     for j = 1:block_size:(Cols)
-        
+        % matching block
         if ((( i + block_size -1) <  Cols) ||(( j + block_size -1) <  Rows))
-            matchBlock(block_i, block_j).block =  img(i:Rows, j:Cols);
+            matchBlock =  img(i:Rows, j:Cols);
+            
         else
-            matchBlock(block_i, block_j).block =  img(i:i+block_size-1, j:j+block_size-1);
+            matchBlock =  img(i:i+block_size-1, j:j+block_size-1);
+            
         end
-        matchBlock(block_i, block_j).loction = [i,j];
-        block_j = block_j + 1;    
+        img_block(block_i, block_j).matchBlock = matchBlock;
+        img_block(block_i, block_j).loc = [i,j];
+        
+        
+        % search_windows_row_begin
+        if ((i - (search_windows_size - block_size)/2) < 0)
+            search_windows_row_begin = 1;
+        else
+            search_windows_row_begin = i - (search_windows_size - block_size)/2;
+        end
+        % search_windows_col_begin
+        if ((j - (search_windows_size - block_size)/2) < 0)
+            search_windows_col_begin = 1;
+        else
+            search_windows_col_begin = j - (search_windows_size - block_size)/2;
+        end
+        % search_windows_row_end
+        if ((i + (search_windows_size - block_size)/2) > Rows)
+            search_windows_row_end = Rows;
+        else
+            search_windows_row_end = i + (search_windows_size - block_size)/2;
+        end
+        % search_windows_col_end
+        if ((j + (search_windows_size - block_size)/2) > Cols)
+            search_windows_col_end = Cols;
+        else
+            search_windows_col_end = j + (search_windows_size - block_size)/2;
+        end
+        % search windows
+        searchingWindow = img_next(search_windows_row_begin:search_windows_row_end, search_windows_col_begin:search_windows_col_end);
+        %  block in search windows search in
+        [searchingWindow_row, searchingWindow_col] = size(searchingWindow);
+        Mean_Square_Error   = zeros((search_windows_size - block_size+1), (search_windows_size - block_size+1));
+        
+        for m = 1 : (searchingWindow_row - block_size+1)
+            for n = 1 : (searchingWindow_col - block_size+1)
+                temp_Matching_Block = searchingWindow(m : m+block_size-1, n : n+block_size-1);
+                temp_Mean_Square_Error = (temp_Matching_Block - matchingBlock) .^ 2;
+                Mean_Square_Error(m, n) = sum(sum(temp_Mean_Square_Error));
+            end
+        end
+        min_Mean_Square_Error = min(min(Mean_Square_Error));
+        % [min_Mean_Square_Error_x, min_Mean_Square_Error_y]=find(Mean_Square_Error==min_Mean_Square_Error);
+        
+        img_block(block_i, block_j).min_Mean_Square_Error_x_y = find(Mean_Square_Error==min_Mean_Square_Error);
+        
+        pointX(block_i, block_j) = img_block(block_i, block_j).min_Mean_Square_Error_x_y(1) - search_windows_size - block_size -1;
+        pointY(block_i, block_j) = img_block(block_i, block_j).min_Mean_Square_Error_x_y(2) - search_windows_size - block_size -1;
+        
+        block_j = block_j + 1;
     end
     
     block_i = block_i +1;
 end
-    
 
+figure(1);
+imagesc([1 Rows], [1 Cols], img);
+hold on;
+xticks(1 : block_size : block_size*block_i);
+yticks(1 : block_size : block_size*block_j);
 
+grid on;        
+%% how to use
+quiver(1 : block_size : block_size *block_i , 1 : block_size : block_size *block_j , pointX, pointY);
 
-
-% 
-block_i = 1;
-for i = 1:block_size: Rows
-    block_j = 1;
-    for j = 1:block_size: Cols
-        
-        % Mean_Square_Error
-        Mean_Square_Error  = zeros(search_windows_size - block_size + 1, search_windows_size -block_size +1 );
-        
-        
-        
-        
-        
-        
-        block_j = block_j + 1;
-    end
-    block_i = block_i + 1;
-end
 
 end
 
