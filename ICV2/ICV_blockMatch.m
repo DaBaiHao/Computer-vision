@@ -88,10 +88,10 @@ for i = 1:block_size:(Rows)
 end
 
 figure(1);
-imagesc([1 Rows], [1 Cols], img);
+imagesc([1 Cols], [1 Rows], img);
 hold on;
-xticks(1 : block_size : block_size*block_i);
-yticks(1 : block_size : block_size*block_j);
+xticks(1 : block_size :Cols);
+yticks(1 : block_size : Rows);
 
 grid on;        
 % length(x)=n ∫Õ length(y) = m£¨∆‰÷– [m,n] = size(u) = size(v)°£
