@@ -11,6 +11,11 @@
 
 - Search window of 20x20 pixels.
 
+
+the function ICV_blockMatch
+
+
+
 ## 2
 
 Read the video and get all frames
