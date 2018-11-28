@@ -78,8 +78,8 @@ for i = 1:block_size:(Rows)
         
         img_block(block_i, block_j).min_Mean_Square_Error_x_y = find(Mean_Square_Error==min_Mean_Square_Error);
         
-        pointX(block_i, block_j) = min_Mean_Square_Error_x(1) - search_windows_size + block_size -1  +2;
-        pointY(block_i, block_j) = min_Mean_Square_Error_y(1) - search_windows_size + block_size -1  +2;
+        pointX(block_i, block_j) = min_Mean_Square_Error_x(1) - search_windows_size + block_size -1;
+        pointY(block_i, block_j) = min_Mean_Square_Error_y(1) - search_windows_size + block_size -1;
         
         block_j = block_j + 1;
     end
@@ -98,10 +98,8 @@ grid on;
 
 % (1 + (block_size/2): block_size : (Rows - block_size) ) 
 % (1 + (block_size/2) : block_size : (Cols - block_size)) 
-n = length((1 + (block_size/2): block_size : Rows )) ;
-m = length((1 + (block_size/2) : block_size : Cols ))
-[a,b] = size(pointX);
-quiver( 1 + (block_size/2) : block_size : Cols  ,  1 + (block_size/2): block_size : Rows  , pointY,pointX);
+quiver( (1 + (block_size/2) : block_size : (Cols - block_size)) ,  (1 + (block_size/2): block_size : (Rows - block_size) )  , pointX, pointY);
+
 
 end
 
