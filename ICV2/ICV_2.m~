@@ -1,6 +1,5 @@
 
-%% 4) Motion estimation
-%% 4 - a : Display the motion vectors
+%% Display the motion vectors
 % video path 
 video = "DatasetC.mpg";
 obj = VideoReader(video);
@@ -20,31 +19,8 @@ searching_Windows_size = 20;
 %  - second frame 
 %  - block Size (if the block is 16 * 16, the size of the block is :16)
 %  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
-img_block = ICV_blockMatch(img1,img2,block_Size,searching_Windows_size);
-%% 4 - b :  Display the image Pt+1, predicted version of It+1, 
-% video path 
-video = "DatasetC.mpg";
-obj = VideoReader(video);
-% two consecutive frames 
-img1 = read(obj,9);
-img2 = read(obj,10);
 
-% input Block 16 * 16
-block_Size = 16;
-
-% searchingWindows
-searching_Windows_size = 20;
-
-% do Display the motion vectors
-% needed input:
-%  - first frame 
-%  - second frame 
-%  - block Size (if the block is 16 * 16, the size of the block is :16)
-%  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
-img_block = ICV_predictionOfFrame(img1,img2,block_Size,searching_Windows_size);
-
-
-
+img_block = ICV_blockMatch(img1,img2,block_Size,searching_Windows_size)
 
 
 %% 2-1

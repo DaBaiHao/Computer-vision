@@ -1,4 +1,4 @@
-function img_block = ICV_blockMatch(img,img_next,block_size,search_windows_size)
+function img_block = ICV_predictionOfFrame(img,img_next,block_size,search_windows_size)
 
 img = double(rgb2gray(img));
 img_next = double(rgb2gray(img_next));
@@ -81,6 +81,9 @@ for i = 1:block_size:(Rows)
         pointX(block_i, block_j) = min_Mean_Square_Error_x(1) - search_windows_size + block_size -1  +2;
         pointY(block_i, block_j) = min_Mean_Square_Error_y(1) - search_windows_size + block_size -1  +2;
         
+        img_block(block_i, block_j).pointX = pointX(block_i, block_j);
+        img_block(block_i, block_j).pointY = pointY(block_i, block_j);
+        
         block_j = block_j + 1;
     end
     
@@ -94,14 +97,49 @@ xticks(1 : block_size :Cols);
 yticks(1 : block_size : Rows);
 
 grid on;        
-% length(x)=n ∫Õ length(y) = m£¨∆‰÷– [m,n] = size(u) = size(v)°£
+% length(x)=n , length(y) = m£¨ [m,n] = size(u) = size(v)°£
 
 % (1 + (block_size/2): block_size : (Rows - block_size) ) 
 % (1 + (block_size/2) : block_size : (Cols - block_size)) 
-%n = length((1 + (block_size/2): block_size : Rows )) ;
-%m = length((1 + (block_size/2) : block_size : Cols ))
-%[a,b] = size(pointX);
+% n = length((1 + (block_size/2): block_size : Rows )) ;
+% m = length((1 + (block_size/2) : block_size : Cols ))
+% [a,b] = size(pointX);
 quiver( 1 + (block_size/2) : block_size : Cols  ,  1 + (block_size/2): block_size : Rows  , pointY,pointX);
+
+
+%img_next = double(rgb2gray(img_next));
+img_pred = img;
+block_i = 1;
+for i = 1  : block_size :Rows
+    
+    block_j = 1;
+    for j = 1 :block_size:Cols
+            if (img_block(block_i, block_j).pointY  ~= 0||img_block(block_i, block_j).pointX  ~= 0)
+                block_rows_begin = i + img_block(block_i, block_j).pointY;
+                
+                block_cols_begin = j + img_block(block_i, block_j).pointX;
+                
+                if block_rows_begin<0
+                    block_rows_begin = 1;
+                end
+                
+                if block_cols_begin<0
+                    block_cols_begin = 1;
+                end
+                    
+                img_pred(block_rows_begin: block_rows_begin + block_size -1 , block_cols_begin: block_cols_begin + block_size -1 ) = img(i:i + block_size-1, j:j +block_size -1 );
+                
+                
+            end
+        
+        
+            block_j = block_j + 1;
+    end
+    block_i = block_i + 1;
+end
+
+figure(2)
+imshow(uint8(img_pred));
 
 end
 
