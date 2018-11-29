@@ -1,4 +1,4 @@
-function img_block = ICV_blockMatch(img,img_next,block_size,search_windows_size)
+function img_block = ICV_blockmatch_se16(img,img_next,block_size,search_windows_size)
 
 img = double(rgb2gray(img));
 img_next = double(rgb2gray(img_next));
@@ -76,10 +76,10 @@ for i = 1:block_size:(Rows)
         min_Mean_Square_Error = min(min(Mean_Square_Error));
         [min_Mean_Square_Error_x, min_Mean_Square_Error_y]=find(Mean_Square_Error==min_Mean_Square_Error);
         
-        img_block(block_i, block_j).min_Mean_Square_Error_x_y = find(Mean_Square_Error==min_Mean_Square_Error);
+        img_block(block_i, block_j).min_Mean_Square_Error_x_y = [min_Mean_Square_Error_x, min_Mean_Square_Error_y];
         
-        pointX(block_i, block_j) = min_Mean_Square_Error_x(1) - search_windows_size + block_size -1;
-        pointY(block_i, block_j) = min_Mean_Square_Error_y(1) - search_windows_size + block_size -1;
+        pointX(block_i, block_j) = min_Mean_Square_Error_x(1)-7 ;
+        pointY(block_i, block_j) = min_Mean_Square_Error_y(1)-7 ;
         
         block_j = block_j + 1;
     end
@@ -88,18 +88,20 @@ for i = 1:block_size:(Rows)
 end
 
 figure(1);
-imagesc([1 Rows], [1 Cols], img);
+imagesc([1 Cols], [1 Rows], img);
 hold on;
-xticks(1 : block_size : block_size*block_i);
-yticks(1 : block_size : block_size*block_j);
+xticks(1 : block_size :Cols);
+yticks(1 : block_size : Rows);
 
 grid on;        
 % length(x)=n ∫Õ length(y) = m£¨∆‰÷– [m,n] = size(u) = size(v)°£
 
 % (1 + (block_size/2): block_size : (Rows - block_size) ) 
 % (1 + (block_size/2) : block_size : (Cols - block_size)) 
-quiver( (1 + (block_size/2) : block_size : (Cols - block_size)) ,  (1 + (block_size/2): block_size : (Rows - block_size) )  , pointX, pointY);
-
+%n = length((1 + (block_size/2): block_size : Rows )) ;
+%m = length((1 + (block_size/2) : block_size : Cols ))
+%[a,b] = size(pointX);
+quiver( 1 + (block_size/2) : block_size : Cols  ,  1 + (block_size/2): block_size : Rows  , pointY,pointX);
 
 end
 

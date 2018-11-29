@@ -2,6 +2,7 @@
 %% 4) Motion estimation
 %% 4 - a : Display the motion vectors
 % video path 
+tic;
 video = "DatasetC.mpg";
 obj = VideoReader(video);
 % two consecutive frames 
@@ -21,6 +22,7 @@ searching_Windows_size = 20;
 %  - block Size (if the block is 16 * 16, the size of the block is :16)
 %  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
 img_block = ICV_blockMatch(img1,img2,block_Size,searching_Windows_size);
+toc;
 %% 4 - b :  Display the image Pt+1, predicted version of It+1, 
 % video path 
 video = "DatasetC.mpg";
@@ -43,11 +45,145 @@ searching_Windows_size = 20;
 %  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
 img_block = ICV_predictionOfFrame(img1,img2,block_Size,searching_Windows_size);
 
-%% 4 - c :  16x16 search window,  
 
+%% 4 - c :  16x16 search window, block_Size 4x4 
+% video path 
+tic;
+video = "DatasetC.mpg";
+obj = VideoReader(video);
+% two consecutive frames 
+img1 = read(obj,9);
+img2 = read(obj,10);
 
+% block_Size 4x4 
+block_Size = 4;
 
+% 16x16 search window,
+searching_Windows_size = 16;
 
+% do Display the motion vectors
+% needed input:
+%  - first frame 
+%  - second frame 
+%  - block Size (if the block is 16 * 16, the size of the block is :16)
+%  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
+img_block = ICV_blockmatch_se16(img1,img2,block_Size,searching_Windows_size);
+toc;
+%% 4 - c :  16x16 search window, block_Size 16 
+% video path 
+tic;
+video = "DatasetC.mpg";
+obj = VideoReader(video);
+% two consecutive frames 
+img1 = read(obj,9);
+img2 = read(obj,10);
+
+% block_Size 4x4 
+block_Size = 16;
+
+% 16x16 search window,
+searching_Windows_size = 16;
+
+% do Display the motion vectors
+% needed input:
+%  - first frame 
+%  - second frame 
+%  - block Size (if the block is 16 * 16, the size of the block is :16)
+%  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
+img_block = ICV_blockmatch_se16_mb16(img1,img2,block_Size,searching_Windows_size);
+toc;
+%% 4 - c :  16x16 search window, block_Size 88 
+% video path 
+tic;
+video = "DatasetC.mpg";
+obj = VideoReader(video);
+% two consecutive frames 
+img1 = read(obj,9);
+img2 = read(obj,10);
+
+% block_Size 4x4 
+block_Size = 8;
+
+% 16x16 search window,
+searching_Windows_size = 16;
+
+% do Display the motion vectors
+% needed input:
+%  - first frame 
+%  - second frame 
+%  - block Size (if the block is 16 * 16, the size of the block is :16)
+%  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
+img_block = ICV_blockmatch_se16_mb88(img1,img2,block_Size,searching_Windows_size);
+toc;
+%% 4 - d :  88 search window, block_Size 88 
+% video path 
+tic;
+video = "DatasetC.mpg";
+obj = VideoReader(video);
+% two consecutive frames 
+img1 = read(obj,9);
+img2 = read(obj,10);
+
+% block_Size 4x4 
+block_Size = 8;
+
+% 16x16 search window,
+searching_Windows_size = 8;
+
+% do Display the motion vectors
+% needed input:
+%  - first frame 
+%  - second frame 
+%  - block Size (if the block is 16 * 16, the size of the block is :16)
+%  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
+img_block = ICV_blockmatch_se88_mb88(img1,img2,block_Size,searching_Windows_size);
+toc;
+%% 4 - d :  16 search window, block_Size 88 
+% video path 
+tic;
+video = "DatasetC.mpg";
+obj = VideoReader(video);
+% two consecutive frames 
+img1 = read(obj,9);
+img2 = read(obj,10);
+
+% block_Size 4x4 
+block_Size = 8;
+
+% 16x16 search window,
+searching_Windows_size = 16;
+
+% do Display the motion vectors
+% needed input:
+%  - first frame 
+%  - second frame 
+%  - block Size (if the block is 16 * 16, the size of the block is :16)
+%  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
+img_block = ICV_blockmatch_se88_mb88(img1,img2,block_Size,searching_Windows_size);
+toc;
+%% 4 - d :  32 search window, block_Size 88 
+% video path 
+tic;
+video = "DatasetC.mpg";
+obj = VideoReader(video);
+% two consecutive frames 
+img1 = read(obj,9);
+img2 = read(obj,10);
+
+% block_Size 4x4 
+block_Size = 8;
+
+% 16x16 search window,
+searching_Windows_size = 32;
+
+% do Display the motion vectors
+% needed input:
+%  - first frame 
+%  - second frame 
+%  - block Size (if the block is 16 * 16, the size of the block is :16)
+%  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
+img_block = ICV_blockmatch_se88_mb88(img1,img2,block_Size,searching_Windows_size);
+toc;
 %% 2-1
 video_path = "DatasetC.mpg";
 ICV_captureMovingObjectFirstFrame(video_path,40);
