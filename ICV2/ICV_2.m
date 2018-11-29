@@ -35,7 +35,7 @@ block_Size = 16;
 % searchingWindows
 searching_Windows_size = 20;
 
-% do Display the motion vectors
+% do Display the motion vectors, and predict img
 % needed input:
 %  - first frame 
 %  - second frame 
@@ -43,6 +43,7 @@ searching_Windows_size = 20;
 %  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20) 
 img_block = ICV_predictionOfFrame(img1,img2,block_Size,searching_Windows_size);
 
+%% 4 - c :  16x16 search window,  
 
 
 

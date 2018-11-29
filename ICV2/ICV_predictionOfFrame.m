@@ -140,6 +140,10 @@ end
 
 figure(2)
 imshow(uint8(img_pred));
+figure(3)
+imshow(uint8(img_next));
+figure(4)
+imshow(uint8(img));
 
 end
 
