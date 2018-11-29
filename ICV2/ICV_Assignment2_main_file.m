@@ -358,4 +358,6 @@ xlabel('gray level');
 ylabel('Number of pixels');
 title('gray histogram');
 
+%% 最后将得到的每个cell的统计直方图进行连接成为一个特征向量，也就是整幅图的LBP纹理特征向量；
+%% 然后便可利用SVM或者其他机器学习算法进行分类了。
 
