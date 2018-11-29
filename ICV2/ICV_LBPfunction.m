@@ -115,7 +115,7 @@ for i = 1:Row_LBP-2
     for j = 1:Col_LBP-2
         
         
-        str = sprintf('%d%d%d%d%d%d%d%d',LBPimg(i, j),LBPimg(i , j+1),LBPimg(i , j+2),LBPimg(i + 1, j+2),LBPimg(i + 2, j+2),LBPimg(i + 2, j+1),LBPimg(i + 2, j),LBPimg(i + 1, j));
+        str = sprintf('%d%d%d%d%d%d%d%d',LBPimg(i+1, j),LBPimg(i+2 , j),LBPimg(i+2 , j+1),LBPimg(i + 2, j+2),LBPimg(i + 1, j+2),LBPimg(i , j+2),LBPimg(i , j+1),LBPimg(i , j));
         LBPimg2(i + 1, j+1) = bin2dec(str);
         
     end

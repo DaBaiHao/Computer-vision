@@ -230,8 +230,8 @@ for i = 1:number
     
 end
 
-%% 3 -2
-% read the car
+%% 3 -1
+
 img_path = "face-2.jpg";
 
 img = imread(img_path);
@@ -263,99 +263,7 @@ end
 his_all = zeros(1,cols);
 for i = 1:rows
     for j = 1:cols
-        his_all(j) = his_all(j) + his(i,j);
+       his_all(i) = his()
     end
 end
-figure(number + 3)
-bar(his_all, 'g');
-xlabel('gray level');
-ylabel('Number of pixels');
-title('gray histogram');
-
-%% 3-3
-img_path = "car-1.jpg";
-
-
-img = imread(img_path);
-img = rgb2gray(img);
-
-block = 128;
-imgs = ICV_divideIntoNonOverlapping(img,block);
-[~,~,number] = size(imgs);
-
-for i = 1:number
-    figure(i)
-    img = imgs(:,:,i);
-    img_i = ICV_LBPfunction(img);
-    figure(number + 1)
-    his(i,:) = ICV_hisgram(img_i, number,i);
-    
-    his_new(i,:) = normalize(his(i,:), 'norm', 1);
-    figure(number + 2)
-    subplot(number,1,i);
-    plot(his_new(i,:), 'b');
-    xlabel('gray level');
-    ylabel('Number of pixels');
-    title('gray histogram');
-    
-end
-
-
-[rows,cols] = size(his);
-his_all = zeros(1,cols);
-for i = 1:rows
-    for j = 1:cols
-        his_all(j) = his_all(j) + his(i,j);
-    end
-end
-figure(number + 3)
-bar(his_all, 'g');
-xlabel('gray level');
-ylabel('Number of pixels');
-title('gray histogram');
-hold off;
-% read the face
-
-
-img_path = "face-2.jpg";
-
-
-img = imread(img_path);
-img = rgb2gray(img);
-
-block = 128;
-imgs = ICV_divideIntoNonOverlapping(img,block);
-[~,~,number] = size(imgs);
-
-for i = 1:number
-    figure(i)
-    img = imgs(:,:,i);
-    img_i = ICV_LBPfunction(img);
-    figure(number + 1)
-    his(i,:) = ICV_hisgram(img_i, number,i);
-    
-    his_new(i,:) = normalize(his(i,:), 'norm', 1);
-    figure(number + 2)
-    subplot(number,1,i);
-    plot(his_new(i,:), 'b');
-    xlabel('gray level');
-    ylabel('Number of pixels');
-    title('gray histogram');
-    
-end
-
-
-[rows,cols] = size(his);
-his_all2 = zeros(1,cols);
-for i = 1:rows
-    for j = 1:cols
-        his_all2(j) = his_all2(j) + his(i,j);
-    end
-end
-figure(number + 4)
-bar(his_all2, 'black');
-xlabel('gray level');
-ylabel('Number of pixels');
-title('gray histogram');
-
 
