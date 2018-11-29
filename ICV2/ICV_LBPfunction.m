@@ -1,12 +1,11 @@
-function ICV_LBPfunction(img)
-
-% greyscale
-img_grayLevel = img(:,:,1);
+function LBPimg2 = ICV_LBPfunction(img_grayLevel)
 
 
 
 
-[Rows, Cols,~] = size(img_grayLevel);
+
+
+[Rows, Cols] = size(img_grayLevel);
 
 
 blocks = cell(round(Rows/3),round(Cols/3));

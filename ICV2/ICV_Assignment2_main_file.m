@@ -203,10 +203,22 @@ ICV_countMovingObject(backgroundImg,video_path,34);
 
 
 %% 3 -1
-video_path = "DatasetC.mpg";
-obj = VideoReader(video_path);
-frame_1 = read(obj,1);
+
 img_path = "face-2.jpg";
+
 img = imread(img_path);
-ICV_LBPfunction(img);
+img = rgb2gray(img);
+
+block = 128;
+imgs = ICV_divideIntoNonOverlapping(img,block);
+[~,~,number] = size(imgs);
+
+for i = 1:number
+    figure(i)
+    img = imgs(:,:,i);
+    img_i = ICV_LBPfunction(img);
+    his = ICV_hisgram(img_i, number,i);
+end
+    
+
 
