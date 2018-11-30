@@ -7,8 +7,11 @@ video = "DatasetC.mpg";
 obj = VideoReader(video);
 % two consecutive frames
 img1 = read(obj,9);
+figure(5)
+imshow(img1);
 img2 = read(obj,10);
-
+figure(6)
+imshow(img2);
 % input Block 16 * 16
 block_Size = 16;
 
@@ -186,6 +189,11 @@ img_block = ICV_blockmatch_se88_mb88(img1,img2,block_Size,searching_Windows_size
 toc;
 %% 2-1
 video_path = "DatasetC.mpg";
+obj = VideoReader(video);
+% two consecutive frames
+img1 = read(obj,1);
+figure(5);
+imshow(img1);
 ICV_captureMovingObjectFirstFrame(video_path,40);
 %% 2-2
 video_path = "DatasetC.mpg";
@@ -357,6 +365,21 @@ bar(his_all2, 'black');
 xlabel('gray level');
 ylabel('Number of pixels');
 title('gray histogram');
+
+his_to_classify = zeros(cols+cols , 2);
+for i = 1:cols
+    his_to_classify(i,1) = i;
+    his_to_classify(i,2) = his_all(i);
+    group(i) = 1;
+end
+
+for i = cols+1:(cols+cols)
+    his_to_classify(i,1) = i - cols;
+    his_to_classify(i,2) = his_all2(i - cols);
+    group(i) = 2;
+end
+
+% svmModel = fitsvm(double(his_to_classify),group);
 
 %% 最后将得到的每个cell的统计直方图进行连接成为一个特征向量，也就是整幅图的LBP纹理特征向量；
 %% 然后便可利用SVM或者其他机器学习算法进行分类了。

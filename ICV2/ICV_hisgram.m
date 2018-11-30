@@ -54,14 +54,13 @@ end
 
 his = number;
 
+subplot(total_number,1,currentNumber);
+bar(his, 'r'); 
+
 norm_img = normalize(his, 'norm', 1);
 
 
-subplot(total_number,1,currentNumber);
 
-
-
-bar(his, 'r'); 
 
 xlabel('gray level');
 ylabel('Number of pixels');
