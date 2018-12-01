@@ -38,6 +38,7 @@ for i = 1:obj_numberofframe
     count = ICV_countHowManyConnectInMatrix(after_filtered_image);
    
     disp(count);
+    number(i) = count;
 end
 
 
