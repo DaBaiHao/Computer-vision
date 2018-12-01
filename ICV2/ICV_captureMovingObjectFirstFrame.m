@@ -6,7 +6,7 @@ obj = VideoReader(video_path);
 obj_numberofframe = obj.NumberOfFrame;
 
 for i = 1:obj_numberofframe -1
-    
+    figure(i);
     % this frame and next frame
     frame_1 = read(obj,1);
     frame_2 = read(obj,i+1);

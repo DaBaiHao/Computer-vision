@@ -189,11 +189,12 @@ img_block = ICV_blockmatch_se88_mb88(img1,img2,block_Size,searching_Windows_size
 toc;
 %% 2-1
 video_path = "DatasetC.mpg";
-obj = VideoReader(video);
+obj = VideoReader(video_path);
 % two consecutive frames
 img1 = read(obj,1);
-figure(5);
+figure(1);
 imshow(img1);
+
 ICV_captureMovingObjectFirstFrame(video_path,40);
 %% 2-2
 video_path = "DatasetC.mpg";
