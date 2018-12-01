@@ -1,7 +1,14 @@
-function [outputArg1,outputArg2] = ICV_findConnect(inputArg1,inputArg2)
+function matrix = ICV_findConnect(matrix,i,j,count)
 
-        [Rows,Cols] = size(matrix);
-        for i =1 : Rows
-   
+[Rows,Cols] = size(matrix);
+
+if matrix(i,j) == 255
+    matrix(i,j) = count;
+end
+
+if matrix(i+1,j) == 255
+    matrix(i,j) = count;
+end
+    
 end
 

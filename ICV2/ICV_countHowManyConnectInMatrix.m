@@ -5,9 +5,10 @@ count = 0;
 for i =1 : Rows
     
     for j = 1: Cols
-        count = count+1;
+        
         if matrix(i,j) == 255
-            
+            count = count+1;
+            matrix = ICV_findConnect(matrix,i,j,count);
         end
         
     end

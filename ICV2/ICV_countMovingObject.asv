@@ -28,14 +28,17 @@ for i = 1:obj_numberofframe
     after_filtered_image = ICV_filter77(after_filtered_image);
     for n = 1 : Rows
         for m = 1 : Cols
-            
+            if (after_filtered_image(n,m) ~= 255 && after_filtered_image(n,m) ~= 0)
+                after_filtered_image(n,m) = 255;
+            end
         end
     end
     imshow(after_filtered_image);
     
-    
+    count = ICV_countHowManyConnectInMatrix(matrix)
+
     % Note not correct
-    cc = bwconncomp(new_img);
+    cc = bwconncomp(after_filtered_image);
     disp(cc.NumObjects);
 end
 

@@ -35,10 +35,10 @@ for i = 1:obj_numberofframe
     end
     imshow(after_filtered_image);
     
-    
+    count = ICV_countHowManyConnectInMatrix(after_filtered_image);
     % Note not correct
-    cc = bwconncomp(after_filtered_image);
-    disp(cc.NumObjects);
+    %cc = bwconncomp(after_filtered_image);
+    disp(count);
 end
 
 
