@@ -316,6 +316,10 @@ for i = 1:rows
         his_all(j) = his_all(j) + his(i,j);
     end
 end
+for i = 1:cols
+    his_all(i) = his_all(i)/rows;
+end
+disp(sum(his_all));
 figure(number + 3)
 bar(his_all, 'g');
 xlabel('gray level');
@@ -357,30 +361,30 @@ end
 his_all2 = zeros(1,cols);
 for i = 1:rows
     for j = 1:cols
+        %disp(sum(his(i,:)));
         his_all2(j) = his_all2(j) + his(i,j);
     end
 end
+for i = 1:cols
+    his_all2(i) = his_all2(i)/rows;
+end
+disp(sum(his_all2));
 figure(number + 4)
 bar(his_all2, 'black');
 xlabel('gray level');
 ylabel('Number of pixels');
 title('gray histogram');
 
-his_to_classify = zeros(cols+cols , 2);
 for i = 1:cols
-    his_to_classify(i,1) = i;
-    his_to_classify(i,2) = his_all(i);
-    group(i) = 1;
+    if(his_all(i) < his_all2(i) )
+        his_intersction(i) = his_all(i);
+    else
+        his_intersction(i) = his_all2(i);
+    end
 end
 
-for i = cols+1:(cols+cols)
-    his_to_classify(i,1) = i - cols;
-    his_to_classify(i,2) = his_all2(i - cols);
-    group(i) = 2;
-end
+disp(sum(his_intersction));
 
-% svmModel = fitsvm(double(his_to_classify),group);
-
-%% 最后将得到的每个cell的统计直方图进行连接成为一个特征向量，也就是整幅图的LBP纹理特征向量；
-%% 然后便可利用SVM或者其他机器学习算法进行分类了。
+figure(number + 5)
+bar(his_intersction, 'b');
 

@@ -1,0 +1,17 @@
+function count = ICV_countHowManyConnectInMatrix(matrix)
+
+[Rows,Cols] = size(matrix);
+
+for i =1 : Rows
+    
+    for j = 1: Cols
+        if matrix(i,j) ~= 0
+            
+        end
+        
+    end
+end
+
+
+end
+
