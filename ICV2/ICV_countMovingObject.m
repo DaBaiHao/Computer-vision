@@ -23,7 +23,7 @@ for i = 1:obj_numberofframe
         end
     end
     
-    imshow(new_img);
+    % imshow(new_img);
     after_filtered_image = ICV_filter77(new_img);
     after_filtered_image = ICV_filter77(after_filtered_image);
     for n = 1 : Rows
@@ -33,11 +33,10 @@ for i = 1:obj_numberofframe
             end
         end
     end
-    imshow(after_filtered_image);
+    % imshow(after_filtered_image);
     
     count = ICV_countHowManyConnectInMatrix(after_filtered_image);
-    % Note not correct
-    %cc = bwconncomp(after_filtered_image);
+   
     disp(count);
 end
 
