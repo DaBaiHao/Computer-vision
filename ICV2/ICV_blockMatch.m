@@ -83,7 +83,7 @@ for i = 1:block_size:(Rows)
         
         img_block(block_i, block_j).min_Mean_Square_Error_x_y = [min_Mean_Square_Error_x, min_Mean_Square_Error_y];
         
-        % 11.	Using the minimum mean square error location to calculate the pointer location.
+        % 
         pointX(block_i, block_j) = min_Mean_Square_Error_x(1) - search_windows_size + block_size -1  +2;
         pointY(block_i, block_j) = min_Mean_Square_Error_y(1) - search_windows_size + block_size -1  +2;
         
@@ -100,7 +100,7 @@ xticks(1 : block_size :Cols);
 yticks(1 : block_size : Rows);
 
 grid on;        
-% length(x)=n and length(y) = m  [m,n] = size(u) = size(v)°£
+% length(x)=n ∫Õ length(y) = m£¨∆‰÷– [m,n] = size(u) = size(v)°£
 
 % (1 + (block_size/2): block_size : (Rows - block_size) ) 
 % (1 + (block_size/2) : block_size : (Cols - block_size)) 

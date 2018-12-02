@@ -103,5 +103,44 @@ grid on;
 %[a,b] = size(pointX);
 quiver( 1 + (block_size/2) : block_size : Cols  ,  1 + (block_size/2): block_size : Rows  , pointY,pointX);
 
+
+%img_next = double(rgb2gray(img_next));
+img_pred = img;
+block_i = 1;
+for i = 1  : block_size :Rows
+    
+    block_j = 1;
+    for j = 1 :block_size:Cols
+        % 4.	If the pointer location is not equals to 0, the image block will over-write the pointer location block.
+        if (img_block(block_i, block_j).pointY  ~= 0||img_block(block_i, block_j).pointX  ~= 0)
+            block_rows_begin = i + img_block(block_i, block_j).pointY;
+            
+            block_cols_begin = j + img_block(block_i, block_j).pointX;
+            
+            if block_rows_begin<0
+                block_rows_begin = 1;
+            end
+            
+            if block_cols_begin<0
+                block_cols_begin = 1;
+            end
+            
+            img_pred(block_rows_begin: block_rows_begin + block_size -1 , block_cols_begin: block_cols_begin + block_size -1 ) = img(i:i + block_size-1, j:j +block_size -1 );
+            
+            
+        end
+        
+        
+        block_j = block_j + 1;
+    end
+    block_i = block_i + 1;
+end
+
+figure(2)
+imshow(uint8(img_pred));
+figure(3)
+imshow(uint8(img_next));
+figure(4)
+imshow(uint8(img));
 end
 

@@ -30,7 +30,7 @@ for i = 1:block_size:(Rows)
         % matching block
         
         matchBlock =  img(i:i+block_size-1, j:j+block_size-1);
-            
+        
         
         img_block(block_i, block_j).matchBlock = matchBlock;
         img_block(block_i, block_j).loc = [i,j];
@@ -96,11 +96,11 @@ hold on;
 xticks(1 : block_size :Cols);
 yticks(1 : block_size : Rows);
 
-grid on;        
+grid on;
 % length(x)=n , length(y) = m£¬ [m,n] = size(u) = size(v)¡£
 
-% (1 + (block_size/2): block_size : (Rows - block_size) ) 
-% (1 + (block_size/2) : block_size : (Cols - block_size)) 
+% (1 + (block_size/2): block_size : (Rows - block_size) )
+% (1 + (block_size/2) : block_size : (Cols - block_size))
 % n = length((1 + (block_size/2): block_size : Rows )) ;
 % m = length((1 + (block_size/2) : block_size : Cols ))
 % [a,b] = size(pointX);
@@ -114,26 +114,27 @@ for i = 1  : block_size :Rows
     
     block_j = 1;
     for j = 1 :block_size:Cols
-            if (img_block(block_i, block_j).pointY  ~= 0||img_block(block_i, block_j).pointX  ~= 0)
-                block_rows_begin = i + img_block(block_i, block_j).pointY;
-                
-                block_cols_begin = j + img_block(block_i, block_j).pointX;
-                
-                if block_rows_begin<0
-                    block_rows_begin = 1;
-                end
-                
-                if block_cols_begin<0
-                    block_cols_begin = 1;
-                end
-                    
-                img_pred(block_rows_begin: block_rows_begin + block_size -1 , block_cols_begin: block_cols_begin + block_size -1 ) = img(i:i + block_size-1, j:j +block_size -1 );
-                
-                
+        % 4.	If the pointer location is not equals to 0, the image block will over-write the pointer location block.
+        if (img_block(block_i, block_j).pointY  ~= 0||img_block(block_i, block_j).pointX  ~= 0)
+            block_rows_begin = i + img_block(block_i, block_j).pointY;
+            
+            block_cols_begin = j + img_block(block_i, block_j).pointX;
+            
+            if block_rows_begin<0
+                block_rows_begin = 1;
             end
+            
+            if block_cols_begin<0
+                block_cols_begin = 1;
+            end
+            
+            img_pred(block_rows_begin: block_rows_begin + block_size -1 , block_cols_begin: block_cols_begin + block_size -1 ) = img(i:i + block_size-1, j:j +block_size -1 );
+            
+            
+        end
         
         
-            block_j = block_j + 1;
+        block_j = block_j + 1;
     end
     block_i = block_i + 1;
 end

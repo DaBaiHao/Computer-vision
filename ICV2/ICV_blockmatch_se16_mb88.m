@@ -94,7 +94,7 @@ xticks(1 : block_size :Cols);
 yticks(1 : block_size : Rows);
 
 grid on;        
-% length(x)=n ∫Õ length(y) = m£¨∆‰÷– [m,n] = size(u) = size(v)°£
+% length(x)=n  length(y) = m  [m,n] = size(u) = size(v)°£
 
 % (1 + (block_size/2): block_size : (Rows - block_size) ) 
 % (1 + (block_size/2) : block_size : (Cols - block_size)) 
