@@ -1,9 +1,11 @@
 function img_block = ICV_blockMatch(img,img_next,block_size,search_windows_size)
 
+% 1.	Convert the images matrix from uint8 to double.
 img = double(rgb2gray(img));
 img_next = double(rgb2gray(img_next));
 [Rows, Cols,~] = size(img);
 
+% 2.	To divide the whole image into several equally sized non-overlapping blocks, the function will cut the extra part of the image.
 if (mod(Rows,block_size) ~= 0)
     for i = 1: mod(Rows,block_size)
         img(i,:) = [];
@@ -21,21 +23,21 @@ end
 
 
 %matchBlock = matchBlock(Rows/block_size,Cols/block_size )
-
+% 3.	The function cut the image into equally sized non-overlapping block according to the block size. The loop will begin with the first pixel of the image end with the last pixel of the image, the step size is the block size.
 % cut to block
 block_i = 1;
 for i = 1:block_size:(Rows)
     block_j = 1;
     for j = 1:block_size:(Cols)
         % matching block
-        
+        % 4.	Each block matrix size is equal to img(i:i+block_size-1, j:j+block_size-1)
         matchBlock =  img(i:i+block_size-1, j:j+block_size-1);
             
         
         img_block(block_i, block_j).matchBlock = matchBlock;
         img_block(block_i, block_j).loc = [i,j];
         
-        
+        %6.	Find the size of the searching windows. The block is in the center of the searching windows, when the beginning of the block is 1 or the ending is the last number of the image, the search windows will out of bounds.
         % search_windows_row_begin
         if ((i - (search_windows_size - block_size)/2) < 0)
             search_windows_row_begin = 1;
@@ -60,12 +62,13 @@ for i = 1:block_size:(Rows)
         else
             search_windows_col_end = j + block_size -1 + (search_windows_size - block_size)/2;
         end
-        % search windows
+        % 8.	The reference of the search windows is the It+1 image. 
         searchingWindow = img_next(search_windows_row_begin:search_windows_row_end, search_windows_col_begin:search_windows_col_end);
         %  block in search windows search in
         [searchingWindow_row, searchingWindow_col] = size(searchingWindow);
         Mean_Square_Error   = zeros((search_windows_size - block_size+1), (search_windows_size - block_size+1));
         
+        % 9.	The searching window moving the block pixel by pixel, and calculate each blocks mean square error. 
         for m = 1 : searchingWindow_row - block_size+1
             for n = 1 : searchingWindow_col - block_size+1
                 temp_Matching_Block = searchingWindow(m : m+block_size-1, n : n+block_size-1);
@@ -73,11 +76,14 @@ for i = 1:block_size:(Rows)
                 Mean_Square_Error(m, n) = sum(sum(temp_Mean_Square_Error));
             end
         end
+        
+        % 10.	And then find the minimum mean square error in the searching window, and it¡¯s location.
         min_Mean_Square_Error = min(min(Mean_Square_Error));
         [min_Mean_Square_Error_x, min_Mean_Square_Error_y]=find(Mean_Square_Error==min_Mean_Square_Error);
         
         img_block(block_i, block_j).min_Mean_Square_Error_x_y = [min_Mean_Square_Error_x, min_Mean_Square_Error_y];
         
+        % 11.	Using the minimum mean square error location to calculate the pointer location.
         pointX(block_i, block_j) = min_Mean_Square_Error_x(1) - search_windows_size + block_size -1  +2;
         pointY(block_i, block_j) = min_Mean_Square_Error_y(1) - search_windows_size + block_size -1  +2;
         
@@ -94,7 +100,7 @@ xticks(1 : block_size :Cols);
 yticks(1 : block_size : Rows);
 
 grid on;        
-% length(x)=n ºÍ length(y) = m£¬ÆäÖÐ [m,n] = size(u) = size(v)¡£
+% length(x)=n and length(y) = m  [m,n] = size(u) = size(v)¡£
 
 % (1 + (block_size/2): block_size : (Rows - block_size) ) 
 % (1 + (block_size/2) : block_size : (Cols - block_size)) 

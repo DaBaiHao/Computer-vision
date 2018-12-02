@@ -549,15 +549,21 @@ img = rgb2gray(img);
 
 block = 200;
 
-img = img(1:200,1:200);
+img = img(1:200,1:200)
 number = 1;
 figure(number)
 
 img_i = ICV_LBPfunction(img);
 figure(number + 1)
-his= ICV_hisgram(img_i, number,1);
+his(1) = ICV_hisgram(img_i, number,1);
 
-
+his_new(i,:) = normalize(his(i,:), 'norm', 1);
+figure(number + 2)
+subplot(number,1,i);
+plot(his_new(i,:), 'b');
+xlabel('gray level');
+ylabel('Number of pixels');
+title('gray histogram');
 
 
 
@@ -589,20 +595,20 @@ img = imread(img_path);
 img = rgb2gray(img);
 
 block = 200;
-img = img(1:200,1:200);
-number = 1;
+imgs = ICV_divideIntoNonOverlapping(img,block);
+[~,~,number] = size(imgs);
 
 
-figure(1)
-
+figure(i)
+img = imgs(:,:,i);
 img_i = ICV_LBPfunction(img);
 figure(number + 1)
-his(1,:) = ICV_hisgram(img_i, number,1);
+his(i,:) = ICV_hisgram(img_i, number,i);
 
-his_new(1,:) = normalize(his(1,:), 'norm', 1);
+his_new(i,:) = normalize(his(i,:), 'norm', 1);
 figure(number + 2)
-subplot(number,1,1);
-plot(his_new(1,:), 'b');
+subplot(number,1,i);
+plot(his_new(i,:), 'b');
 xlabel('gray level');
 ylabel('Number of pixels');
 title('gray histogram');
