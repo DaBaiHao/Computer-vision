@@ -220,7 +220,7 @@ xlabel('each frame');
 ylabel('Number of moving object');
 title('each frame moving object number');
 
-%% 3 -1
+%% 6 - a
 
 img_path = "face-2.jpg";
 
@@ -248,7 +248,7 @@ for i = 1:number
     
 end
 
-%% 3 -2
+%% 6 - b
 % read the car
 img_path = "face-2.jpg";
 
