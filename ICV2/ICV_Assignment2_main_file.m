@@ -187,7 +187,23 @@ searching_Windows_size = 32;
 %  - searching Windows size (if the searching Windows is 20 * 20, the size of the searching Windows is :20)
 img_block = ICV_blockmatch_se88_mb88(img1,img2,block_Size,searching_Windows_size);
 toc;
-%% 2-1
+
+%%
+block(1) = 1.761944;
+block(2) = 0.824722;
+block(3) = 0.679418;
+figure(3)
+
+bar(block, 'r');
+block(1) = 0.705818;
+block(2) = 0.759334;
+block(3) = 1.690244;
+figure(4)
+bar(block, 'r');
+
+
+
+%% 5-a
 video_path = "DatasetC.mpg";
 obj = VideoReader(video_path);
 % two consecutive frames
@@ -201,16 +217,16 @@ img1 = read(obj,10);
 imshow(img1);
 
 ICV_captureMovingObjectFirstFrame(video_path,40);
-%% 2-2
+%% 5-b
 video_path = "DatasetC.mpg";
 ICV_captureMovingObjectPreviousFrame(video_path,40);
 
-%% 2-3
+%% 5-c
 video_path = "DatasetC.mpg";
 backgroundImg = ICV_generateBackground(video_path);
 
 
-%% 2-4
+%% 5-d
 video_path = "DatasetC.mpg";
 backgroundImg = ICV_generateBackground(video_path);
 number = ICV_countMovingObject(backgroundImg,video_path,34);
