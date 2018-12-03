@@ -188,7 +188,7 @@ searching_Windows_size = 32;
 img_block = ICV_blockmatch_se88_mb88(img1,img2,block_Size,searching_Windows_size);
 toc;
 
-%%
+%% 4-e
 block(1) = 1.761944;
 block(2) = 0.824722;
 block(3) = 0.679418;
